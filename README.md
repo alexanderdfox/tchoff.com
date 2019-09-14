@@ -2,6 +2,6 @@
 
 Ticked Off!
 
-Social Media for 18+ USA Only!
+Political Social Media for 18+ USA Only!
 
 # tchoff.com
