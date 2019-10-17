@@ -1,4 +1,50 @@
 body {
-        background: orange;
+	background: linear-gradient(to right, #b22234 50%, #3c3b6e 50%);
         text-align: center;
+	color: white;
+}
+table {
+	border: 2px solid black;
+	margin-left:auto;
+	margin-right:auto;
+	border-radius: 10px;
+}
+td {
+	border: 2px solid black;
+	padding: 15px;
+}
+tr:nth-child(even) {
+	color: white;
+	background: #b22234;
+}
+tr:nth-child(odd) {
+	color: #b22234;
+	background: white;
+}
+a {
+	color: #3c3b6e;
+	background: white;
+	border: 2px solid black;
+	border-radius: 5px;
+	text-decoration: none;
+	padding: 3px;
+	box-shadow: 2.5px 5px black;
+}
+a:hover {
+	color: #b22234;
+	background: #3c3b6e;
+}
+tr.toprow {
+	background: #3c3b63;
+	color: white;
+	font-size: 20pt;
+	text-shadow: 3px 2px black;
+}
+h1 {
+	color: black;
+	text-shadow: 3px 2px white;
+}
+h2 {
+	color: white;
+	text-shadow: 3px 2px black;
 }
