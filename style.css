@@ -12,6 +12,7 @@ table {
 td {
 	border: 2px solid black;
 	padding: 15px;
+	border-radius: 15px;
 }
 tr:nth-child(even) {
 	color: white;
@@ -20,6 +21,14 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
 	color: #b22234;
 	background: white;
+}
+tr:nth-child(even):hover {
+	background: #3c3b63;
+	color: white;
+}
+tr:nth-child(odd):hover {
+	background: #3c3b63;
+	color: white;
 }
 a {
 	color: #3c3b6e;
@@ -34,17 +43,20 @@ a:hover {
 	color: #b22234;
 	background: #3c3b6e;
 }
-tr.toprow {
-	background: #3c3b63;
+tr.toprow th {
+	background: #b22234;
 	color: white;
 	font-size: 20pt;
 	text-shadow: 3px 2px black;
+	border-radius: 15px;
 }
-h1 {
-	color: black;
-	text-shadow: 3px 2px white;
+tr.toprow th:hover {
+	background: #3c3b6e;
 }
-h2 {
+th {
+	border-radius: 15px;
+}
+h1, h2, h3 {
 	color: white;
 	text-shadow: 3px 2px black;
 }
