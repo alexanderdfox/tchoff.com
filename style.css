@@ -38,6 +38,8 @@ a {
 	text-decoration: none;
 	padding: 3px;
 	box-shadow: 2.5px 5px black;
+	cursor: url(check.png),auto;
+	text-size: 24pt;
 }
 a:hover {
 	color: #b22234;
