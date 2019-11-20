@@ -29,16 +29,25 @@ if ($_GET['vote'] != null && $_GET['vote'] != "") {
 		echo "<table>";
 		echo "<tr class='toprow'><th>Name</th><th>Party</th><th>Votes</th><th>Percentage</th><th>Website</th></tr>";
 		$array = select("SELECT * FROM `tchoff.com` ORDER BY `name`;");
+		$votes = array();
 		foreach ($array as $vote) {
 			$count = cnt($vote[0]);
 			$percentage = round($count/$totalCount* 100,2);
-			echo "<tr>";
-			echo "<td>" . button($vote[0]) .  "</td>";			
-			echo "<td>" . $vote[1] . "</td>";
-			echo "<td>" . $count . "</td>";
-			echo "<td>" . $percentage . "%</td>";
-			echo "<td><a class='website' href='" . $vote[2] . "'>" . $vote[2] . "</a></td>";
-			echo "</tr>";
+			$name = $vote[0];
+			$party = $vote[1];
+			$website = $vote[2];
+			$voter = array( "count" => $count, "name" => $name, "party" => $party, "percentage" => $percentage, "website" => $website);
+			array_push($votes,$voter);
+		}
+		arsort($votes);
+		foreach (array_slice($votes, 0, 10) as $voter) {
+			echo '<tr>';
+			echo '<td>' . button($voter["name"]) . '</td>';
+			echo '<td>' . $voter["party"] . '</td>';
+			echo '<td>' . $voter["count"] . '</td>';
+			echo '<td>' . $voter["percentage"] . '</td>';
+			echo '<td><a class="website" href="' . $voter["website"] . '">' . $voter["website"] . '</a></td>';
+			echo '</tr>';
 		}
 		echo "</table>";
 	}

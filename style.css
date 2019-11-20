@@ -45,6 +45,12 @@ a:hover {
 	color: #b22234;
 	background: #3c3b6e;
 }
+h4 a:hover {
+	cursor: default;
+}
+a.website:hover {
+	cursor: default;
+}
 tr.toprow th {
 	background: #b22234;
 	color: white;
