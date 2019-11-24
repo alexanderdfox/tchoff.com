@@ -37,7 +37,11 @@ if ($_GET['vote'] != null && $_GET['vote'] != "") {
 			echo "<td>" . $vote[1] . "</td>";
 			echo "<td>" . $count . "</td>";
 			echo "<td>" . $percentage . "%</td>";
-			echo "<td><a class='website' href='" . $vote[2] . "'>" . $vote[2] . "</a></td>";
+			if ($vote[2] == "" || $vote[2] == null)
+				echo "<td><a class='website' href='mailto:alex@tchoff.com?subject=" . $vote[0]  . "&body=Website: '>Email Me to add your website.</a></td>";
+			else {
+				echo "<td><a class='website' href='" . $vote[2] . "'>" . $vote[2] . "</a></td>";
+			}
 			echo "</tr>";
 		}
 		echo "</table>";
