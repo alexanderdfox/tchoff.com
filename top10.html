@@ -45,8 +45,12 @@ if ($_GET['vote'] != null && $_GET['vote'] != "") {
 			echo '<td>' . button($voter["name"]) . '</td>';
 			echo '<td>' . $voter["party"] . '</td>';
 			echo '<td>' . $voter["count"] . '</td>';
-			echo '<td>' . $voter["percentage"] . '</td>';
-			echo '<td><a class="website" href="' . $voter["website"] . '">' . $voter["website"] . '</a></td>';
+			echo '<td>' . $voter["percentage"] . '%</td>';
+			if ($voter["website"] == "" || $voter["website"] == null)
+				echo "<td><a class='website' href='mailto:alex@tchoff.com?subject=" . $voter["name"]  . "&body=Website: '>Email Me to add your website.</a></td>";
+			else {
+				echo '<td><a class="website" href="' . $voter["website"] . '">' . $voter["website"] . '</a></td>';
+			}
 			echo '</tr>';
 		}
 		echo "</table>";
