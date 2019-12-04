@@ -1,5 +1,5 @@
 body {
-	background: linear-gradient(to right, #b22234 50%, #3c3b6e 50%);
+	background: linear-gradient(to left, #b22234 50%, #3c3b6e 50%);
         text-align: center;
 	color: white;
 }
@@ -52,14 +52,14 @@ a.website:hover {
 	cursor: default;
 }
 tr.toprow th {
-	background: #b22234;
+	background: linear-gradient(to left, #b22234 50%, #3c3b6e 50%);
 	color: white;
 	font-size: 20pt;
 	text-shadow: 3px 2px black;
 	border-radius: 15px;
 }
 tr.toprow th:hover {
-	background: #3c3b6e;
+	background: linear-gradient(to right, #b22234 50%, #3c3b6e 50%);
 }
 th {
 	border-radius: 15px;
