@@ -11,28 +11,21 @@ if ($_GET['vote'] != null && $_GET['vote'] != "") {
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 	<style type="text/css">
-			<?php
-				if(rand(0,1)) {
-			?>
+<?php if(rand(0,1)) { ?>
 		body {
 			background: linear-gradient(to left, #b22234 50%, #3c3b6e 50%) !important;
 		}
 		body:hover {
 			background: linear-gradient(to right, #b22234 50%, #3c3b6e 50%) !important;
 		}
-			<?php
-				}
-				else {
-			?>
+<?php } else { ?>
 		body {
 			background: linear-gradient(to right, #b22234 50%, #3c3b6e 50%) !important;
 		}
 		body:hover {
 			background: linear-gradient(to left, #b22234 50%, #3c3b6e 50%) !important;
 		}
-			<?php
-				}
-			?>
+<?php } ?>
 	</style>
 	<script data-ad-client="ca-pub-4904307153873639" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<meta charset="UTF-8">
