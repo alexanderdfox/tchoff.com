@@ -40,6 +40,7 @@ a {
 	box-shadow: 2.5px 5px black;
 	cursor: url(check.png),auto;
 	text-size: 24pt;
+	line-height: 35px;
 }
 a:hover {
 	color: #b22234;
