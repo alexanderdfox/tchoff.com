@@ -2,7 +2,7 @@
 include('functions.php');
 print("DROP TABLE IF EXISTS `tchoff.com`;");
 print("\r\n");
-print("CREATE TABLE IF NOT EXISTS `tchoff.com` (`name` TEXT, `party` TEXT, `website`);");
+print("CREATE TABLE IF NOT EXISTS `tchoff.com` (`name` TEXT, `party` TEXT);");
 print("\r\n");
 for ($pageNUM=1; $pageNUM < 30; $pageNUM++) { 
 	$url = "https://api.open.fec.gov/v1/candidates/?sort_nulls_last=false&sort_hide_null=false&api_key=" . $api_key . "&office=P&per_page=100&sort_null_only=false&sort=name&page=" . $pageNUM .  "&election_year=2020";
