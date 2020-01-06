@@ -1,0 +1,110 @@
+body {
+	background: linear-gradient(to left, #b22234 50%, #3c3b6e 50%);
+        text-align: center;
+	color: white;
+}
+table {
+	border: 2px solid black;
+	margin-left:auto;
+	margin-right:auto;
+	border-radius: 10px;
+}
+td {
+	border: 2px solid black;
+	padding: 15px;
+	border-radius: 15px;
+}
+tr:nth-child(even) {
+	color: white;
+	background: #b22234;
+}
+tr:nth-child(odd) {
+	color: #b22234;
+	background: white;
+}
+tr:nth-child(even):hover {
+	background: #3c3b63;
+	color: white;
+}
+tr:nth-child(odd):hover {
+	background: #3c3b63;
+	color: white;
+}
+a {
+	color: #3c3b6e;
+	background: white;
+	border: 2px solid black;
+	border-radius: 5px;
+	text-decoration: none;
+	padding: 3px;
+	box-shadow: 2.5px 5px black;
+	cursor: url(check.png),auto;
+	text-size: 24pt;
+	line-height: 35px;
+}
+a:hover {
+	color: #b22234;
+	background: #3c3b6e;
+}
+h4 a:hover {
+	cursor: default;
+}
+a.website:hover {
+	cursor: default;
+}
+tr.toprow th {
+	background: linear-gradient(to left, #b22234 50%, #3c3b6e 50%);
+	color: white;
+	font-size: 20pt;
+	text-shadow: 3px 2px black;
+	border-radius: 15px;
+}
+tr.toprow th:hover {
+	background: linear-gradient(to right, #b22234 50%, #3c3b6e 50%);
+}
+th {
+	border-radius: 15px;
+}
+h1, h2, h3 {
+	color: white;
+	text-shadow: 3px 2px black;
+}
+#star-five {
+	margin: 50px 0;
+	position: relative;
+	display: block;
+	color: white;
+	width: 0px;
+	height: 0px;
+	border-right: 100px solid transparent;
+	border-bottom: 70px solid white;
+	border-left: 100px solid transparent;
+	transform: rotate(35deg);
+}
+#star-five:before {
+	border-bottom: 80px solid white;
+	border-left: 30px solid transparent;
+	border-right: 30px solid transparent;
+	position: absolute;
+	height: 0;
+	width: 0;
+	top: -45px;
+	left: -65px;
+	display: block;
+	content: '';
+	transform: rotate(-35deg);
+}
+#star-five:after {
+	position: absolute;
+	display: block;
+	color: white;
+	top: 3px;
+	left: -105px;
+	width: 0px;
+	height: 0px;
+	border-right: 100px solid transparent;
+	border-bottom: 70px solid white;
+	border-left: 100px solid transparent;
+	transform: rotate(-70deg);
+	content: '';
+}

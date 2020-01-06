@@ -1,0 +1,148 @@
+<?php
+$state = basename(__DIR__);
+if ($_GET['vote'] != null && $_GET['vote'] != "") {
+        mysqlInsert($_GET['vote'], $state);
+        header('Location: https://state.tchoff.com/' . $state . '/' );
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+	<?php
+		echo $state;
+	?>
+	</title>
+        <link rel="stylesheet" type="text/css" href="../style.css">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <style type="text/css">
+<?php if(rand(0,1)) { ?>
+                body {
+                        background: linear-gradient(to left, #b22234 50%, #3c3b6e 50%) !important;
+                }
+                body:hover {
+                        background: linear-gradient(to right, #b22234 50%, #3c3b6e 50%) !important;
+                }
+<?php } else { ?>
+                body {
+                        background: linear-gradient(to right, #b22234 50%, #3c3b6e 50%) !important;
+                }
+                body:hover {
+                        background: linear-gradient(to left, #b22234 50%, #3c3b6e 50%) !important;
+                }
+<?php } ?>
+        </style>
+        <script data-ad-client="ca-pub-4904307153873639" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <meta charset="UTF-8">
+        <meta name="description" content="Tchoff.com - Political Social Voting">
+        <meta name="keywords" content="democractic republic, tchoff, tchoff.com, america, usa, political, president">
+        <meta name="author" content="alex.d.fox@icloud.com">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<h1 style="color: white;">
+	<?php
+		echo $state;
+		votes($state);
+	?>
+</h1>
+</body>
+</html>
+<?php
+	function votes($state) {
+		$totalCount = totalcnt($state);
+		echo "<h2>Total Votes: " .$totalCount  . "</h2>";
+		echo "<table>";
+		echo "<tr class='toprow'><th>Name</th><th>Party</th><th>Votes</th><th>Percentage</th><th>Website</th></tr>";
+		$array = select("SELECT * FROM `tchoff.com` ORDER BY `name`;");
+		foreach ($array as $vote) {
+			$count = cnt($vote[0], $state);
+			$percentage = round($count/$totalCount* 100,2);
+			echo "<tr>";
+			echo "<td>" . button($vote[0]) .  "</td>";			
+			echo "<td>" . $vote[1] . "</td>";
+			echo "<td>" . $count . "</td>";
+			echo "<td>" . $percentage . "%</td>";
+			if ($vote[2] == "" || $vote[2] == null)
+				echo "<td><a class='website' href='mailto:alex@tchoff.com?subject=" . $vote[0]  . "&body=Website: '>Email Me to add your website.</a></td>";
+			else {
+				echo "<td><a class='website' href='" . $vote[2] . "'>" . $vote[2] . "</a></td>";
+			}
+			echo "</tr>";
+		}
+		echo "</table>";
+	}
+	function button($vote) {
+		$button = 'Vote For: <a href="index.html?vote=' . $vote . '">' .  $vote . '</a>';
+		return $button;
+	}
+	function cnt($vote, $state) {
+		$conn = connectMysql();
+		$count = 0;
+		$name = mysqli_real_escape_string($conn, $vote);
+		$conn = connectMysql();
+		$array = [];
+		$result = $conn->query("SELECT * FROM `" . $state . ".votes` WHERE `vote` LIKE '" . $name . "'; ");
+		if ($result->num_rows > 0) {
+		    $count=mysqli_num_rows($result);
+		    mysqli_free_result($result);
+		}
+		$conn->close();
+		return $count;
+	}
+	function totalcnt($state) {
+		$count = 0;
+		$conn = connectMysql();
+		$array = [];
+		$result = $conn->query("SELECT * FROM `" . $state .".votes`;");
+		if ($result->num_rows > 0) {
+		    $count=mysqli_num_rows($result);
+		    mysqli_free_result($result);
+		}
+		$conn->close();
+		return $count;
+	}
+	function select($sql) {
+		$conn = connectMysql();
+		$array = [];
+		$result = $conn->query($sql);
+		if ($result->num_rows > 0) {
+		    while($row = $result->fetch_assoc()) {
+		        array_push($array, array($row['name'], $row['party'], $row['website']));
+		    }
+		}
+		$conn->close();
+		return $array;
+	}
+	function state($sql) {
+		$conn = connectMysql();
+		$array = [];
+		$result = $conn->query($sql);
+		if ($result->num_rows > 0) {
+		    while($row = $result->fetch_assoc()) {
+		        array_push($array, array($row['state'], $row['electoral']));
+		    }
+		}
+		$conn->close();
+		return $array;
+	}
+	function mysqlInsert($name, $state) {
+		$conn = connectMysql();
+		$vote = mysqli_real_escape_string($conn, $name);
+		if ($vote != "" && $vote != null) {
+			$sql = "INSERT INTO `" . $state . ".votes` (vote) VALUES ('" . $vote . "')";
+			if ($conn->query($sql) === TRUE) {
+	 	   		echo "Thank you for your vote!";
+			}
+		}
+		$conn->close();
+	}
+	function connectMysql() {
+		include '../../functions.php';
+		$conn = new mysqli($servername, $username, $password, $dbname);
+		if ($conn->connect_error) {
+		    die("Connection failed: " . $conn->connect_error);
+		} 
+		return $conn;
+	}
+?>
